@@ -9,15 +9,7 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.bgSwap {
-    /* width: 100vw;
-    height: 100vh; */
-    z-index: 100;
-    /* background-image: url('https://raw.githubusercontent.com/amgod1/stage1-tasks/assets/images/night/10.jpg') center center / cover no-repeat; */
-}
-
 body {
-    /* transition: background 1.5s ease-in-out; */
     transition: background-image 2s ease-in-out;
 }
 
