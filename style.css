@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+.blur {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.bgSwap {
+    /* width: 100vw;
+    height: 100vh; */
+    z-index: 100;
+    /* background-image: url('https://raw.githubusercontent.com/amgod1/stage1-tasks/assets/images/night/10.jpg') center center / cover no-repeat; */
+}
+
+body {
+    /* transition: background 1.5s ease-in-out; */
+    transition: background-image 2s ease-in-out;
+}
+
+#main_time {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.datetime {
+    color: white;
+    font-family: 'Arial', sans-serif;
+}
+
+.time {
+    display: flex;
+    justify-content: center;
+    min-height: 124px;
+    margin-bottom: 10px;
+    font-size: 100px;
+    font-weight: bold;
+    letter-spacing: 4px;
+}
+
+.date {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.greeting_container {
+    text-align: center;
+    font-size: 40px;
+    padding-top: 20px;
+}
+
+input {
+    width: 230px;
+}
+
+.name {
+    border: 0;
+    outline: 0;
+    font-size: 40px;
+    background-color: transparent;
+    color: white;
+}
+
+::-webkit-input-placeholder { color: rgb(133, 133, 133);}
+
+#quotes {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    max-width: 90vw;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    color: white;
+    bottom: 20px;
+}
+
+#author {
+    margin-top: 15px;
+}
+
+#left {
+    position: absolute;
+    top: 50%;
+}
+
+#right {
+    position: absolute;
+    top: 50%;
+    right: 0;
+}
+
+.change-img {
+    transition: all .25s;
+}
+
+.change-img:hover {
+    scale: 1.2;
+    cursor: pointer;
+}
+
+.change-img:active {
+    scale: 0.9;
+}
+
+button, 
+button:active, 
+button:focus {
+    border: 0;
+    padding: 0;
+    background: none;
+    margin-bottom: 25px;
+}
+
+@media screen and (max-width: 700px) {
+    .time {
+        font-size: 75px;
+        min-height: 0;
+    }
+  
+    .date {
+        font-size: 15px;
+    }
+
+    .greeting_container {
+        font-size: 20px;
+        padding-top: 0;
+    }
+
+    .name {
+        font-size: 20px;
+    }
+
+    input {
+        width: 120px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .time {
+        font-size: 50px;
+        min-height: 0;
+    }
+}

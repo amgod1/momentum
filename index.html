@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>momentum</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="fav-momentum-32.png">
+</head>
+
+<body onload="initClock()">
+    <div class="blur">
+        <div class="bgSwap"></div>
+        <main id="main_time">
+            <div class="datetime">
+                <div class="time">
+                    <span id="hour">00</span>:
+                    <span id="minutes">00</span>:
+                    <span id="seconds">00</span>
+                </div>
+                <div class="date">
+                    <span id="dayname">Day</span>,
+                    <span id="month">Month</span>
+                    <span id="daynum">00</span>
+                </div>
+                <div class="greeting_container">
+                    <span id="greeting">say</span>
+                    <input type="text" class="name" id="input" placeholder="[Enter name]">
+                </div>
+            </div>
+        </main>
+        <div class="slider_container">
+            <div id="left">
+                <button onclick="prevBackground()" class="btn">
+                    <img class="change-img" src="https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/1df526e88706d485c69ad2a929dcbd6c26b3749c/assets/svg/slider-prev.svg" alt="prev" width="50%" height="50%">
+                </button>
+            </div>
+            <div id="right">
+                <button onclick="nextBackground()" class="btn">
+                    <img class="change-img" src="https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/1df526e88706d485c69ad2a929dcbd6c26b3749c/assets/svg/slider-next.svg" alt="next" width="50%" height="50%">
+                </button>
+            </div>
+        </div>
+        <footer>
+            <div id="quotes">
+                <div id="quotes_reload">
+                    <button onclick="randomQuote()" class="btn">
+                        <img class="change-img" src="https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/1df526e88706d485c69ad2a929dcbd6c26b3749c/assets/svg/reload.svg" alt="reload_icon" width="50%" height="50%">
+                    </button>
+                </div>
+                <p id="text">text</p>
+                <p id="author">author</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
