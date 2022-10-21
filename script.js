@@ -209,20 +209,28 @@ let quotes = [
            "quote":"If you can dream it, you can achieve it.","author":"Zig Ziglar"}
 ]
 
+function startApp() {
+    updateClock()
+    window.setInterval("updateClock()", 1)
+    randomBackground()
+    randomQuote()
+    getName()
+}
+
 function randomBackground() {
     if (num.toString().length == 1) {num = "0" + num};
 
     if (time >= 0 && time < 6) {
-       // document.body.style.background = "url('assets/night"+ num +".jpg')"
+       preloadBackground('night')
        document.body.style.background = "url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/night/" + num + ".jpg')"
     } else if (time >= 6 && time < 12) {
-       // document.body.style.background = "url('assets/morning"+ num +".jpg')"
+       preloadBackground('morning')
        document.body.style.background = "url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/morning/" + num + ".jpg')"
     } else if (time >= 12 && time < 18) {
-       // document.body.style.background = "url('assets/afternoon"+ num +".jpg')"
+       preloadBackground('afternoon')
        document.body.style.background = "url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/afternoon/" + num + ".jpg')"
     } else if (time >= 18 && time <= 23) {
-       // document.body.style.background = "url('assets/evening"+ num +".jpg')"
+       preloadBackground('evening')
        document.body.style.background = "url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/evening/" + num + ".jpg')"
     }
 
@@ -237,19 +245,7 @@ function nextBackground() {
     if (num.toString().length == 1) { num = "0" + num }
     if (num >= 21) { num = '01' }
 
-    if (time >= 0 && time < 6) {
-       // document.body.style.background = "url('assets/night"+ num +".jpg')"
-       document.body.style.background = "url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/night/" + num + ".jpg')"
-    } else if (time >= 6 && time < 12) {
-       // document.body.style.background = "url('assets/morning"+ num +".jpg')"
-       document.body.style.background = "url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/morning/" + num + ".jpg')"
-    } else if (time >= 12 && time < 18) {
-       // document.body.style.background = "url('assets/afternoon"+ num +".jpg')"
-       document.body.style.background = "url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/afternoon/" + num + ".jpg')"
-    } else if (time >= 18 && time <= 23) {
-       // document.body.style.background = "url('assets/evening"+ num +".jpg')"
-       document.body.style.background = "url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/evening/" + num + ".jpg')"
-    }
+    getBackground(num)
 
     document.body.style.backgroundPosition = "center"
     document.body.style.backgroundRepeat = "no-repeat"
@@ -262,23 +258,23 @@ function prevBackground() {
     if (num.toString().length == 1) { num = "0" + num }
     if (num < 01) { num = '20' }
 
-    if (time >= 0 && time < 6) {
-       // document.body.style.background = "url('assets/night"+ num +".jpg')"
-       document.body.style.background = "url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/night/" + num + ".jpg')"
-    } else if (time >= 6 && time < 12) {
-       // document.body.style.background = "url('assets/morning"+ num +".jpg')"
-       document.body.style.background = "url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/morning/" + num + ".jpg')"
-    } else if (time >= 12 && time < 18) {
-       // document.body.style.background = "url('assets/afternoon"+ num +".jpg')"
-       document.body.style.background = "url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/afternoon/" + num + ".jpg')"
-    } else if (time >= 18 && time <= 23) {
-       // document.body.style.background = "url('assets/evening"+ num +".jpg')"
-       document.body.style.background = "url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/evening/" + num + ".jpg')"
-    }
+    getBackground(num)
 
     document.body.style.backgroundPosition = "center"
     document.body.style.backgroundRepeat = "no-repeat"
     document.body.style.backgroundSize = "cover"
+}
+
+function getBackground (str) {
+    if (time >= 0 && time < 6) {
+        document.body.style.background = "url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/night/" + str + ".jpg')"
+    } else if (time >= 6 && time < 12) {
+        document.body.style.background = "url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/morning/" + str + ".jpg')"
+    } else if (time >= 12 && time < 18) {
+        document.body.style.background = "url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/afternoon/" + str + ".jpg')"
+    } else if (time >= 18 && time <= 23) {
+        document.body.style.background = "url('https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/evening/" + str + ".jpg')"
+    }
 }
 
 function updateClock() {
@@ -312,14 +308,6 @@ function updateClock() {
     ids.forEach((el, i) => document.getElementById(el).firstChild.nodeValue = values[i])
 }
 
-function initClock() {
-    updateClock()
-    window.setInterval("updateClock()", 1)
-    randomBackground()
-    randomQuote()
-    getName()
-}
-
 function randomQuote() {
     let rand = Math.floor(Math.random() * quotes.length)
     let quotesIds = ["text", "author"];
@@ -336,3 +324,17 @@ function getName() {
     }
 }
 
+let images = []
+function preload() {
+    for (let i = 0; i < arguments.length; i++) {
+        images[i] = new Image()
+        images[i].src = preload.arguments[i]
+    }
+}
+
+function preloadBackground(part) {
+    for (let i = 1; i < 21; i++) {
+         let str = (i.toString().length === 1) ? '0' + i : i
+         preload(`https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${part}/${str}.jpg`)
+    }
+}
